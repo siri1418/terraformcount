@@ -10,7 +10,7 @@ resource "azurerm_virtual_network" "virtualnetwork" {
   resource_group_name = azurerm_resource_group.resource.name
 }
 resource "azurerm_subnet" "sub1" {
-  count = 4
+  count = length(var.sub.name)
   name                 = var.sub.name[count.index]
   resource_group_name  = azurerm_resource_group.resource.name
   virtual_network_name = azurerm_virtual_network.virtualnetwork.name
